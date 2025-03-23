@@ -21,8 +21,8 @@ def on_generate():
     entry_password.insert(0, pwd)
 
 app = tk.Tk()
-app.title("Generator Haseł")
-app.geometry("300x150")
+app.title("ysnp (you_shall_not_pass)")
+app.geometry("350x150")
 app.resizable(False, False)
 
 label_length = tk.Label(app, text="Długość hasła:")
