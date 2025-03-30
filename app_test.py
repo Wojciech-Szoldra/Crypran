@@ -14,7 +14,7 @@ def on_generate():
         if length <= 0:
             raise ValueError("Długość musi być większa od 0.")
     except ValueError as ve:
-        messagebox.showerror("Błąd", f"Niepoprawna wartość długości: {ve}")
+        tk.showerror("Błąd", f"Niepoprawna wartość długości: {ve}")
         return
     pwd = generate_password(length)
     entry_password.config(state=tk.NORMAL)
@@ -52,6 +52,8 @@ btn_generate = ttk.Button(frame, text="Generuj", command=on_generate)
 btn_generate.grid(row=0, column=2, padx=10, pady=5)
 
 # Pole wyświetlające hasło
+lbl_length = ttk.Label(frame, text="Hasło:")
+lbl_length.grid(row=1, column=0, padx=5, pady=5, sticky="e")
 entry_password = ttk.Entry(frame, width=32, state='readonly')
 entry_password.grid(row=1, column=1, columnspan=3, padx=5, pady=10)
 
