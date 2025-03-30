@@ -52,8 +52,8 @@ btn_generate = ttk.Button(frame, text="Generuj", command=on_generate)
 btn_generate.grid(row=0, column=2, padx=10, pady=5)
 
 # Pole wyświetlające hasło
-entry_password = ttk.Entry(frame, width=35, state='readonly')
-entry_password.grid(row=1, column=0, columnspan=3, padx=5, pady=10)
+entry_password = ttk.Entry(frame, width=32, state='readonly')
+entry_password.grid(row=1, column=1, columnspan=3, padx=5, pady=10)
 
 # Etykieta statusu
 lbl_status = ttk.Label(frame, text="", foreground="green")
