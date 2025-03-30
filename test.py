@@ -4,9 +4,20 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import pyperclip
 
+
 def generate_password(length=12):
     alphabet = string.ascii_letters + string.digits + string.punctuation
     return ''.join(secrets.choice(alphabet) for _ in range(length))
+
+
+def toggle_password_visibility():
+    if entry_password.cget('show') == '•':
+        entry_password.config(show='')
+        btn_toggle.config(text='👁')
+    else:
+        entry_password.config(show='•')
+        btn_toggle.config(text='🔒')
+
 
 def on_generate():
     try:
@@ -17,17 +28,19 @@ def on_generate():
         messagebox.showerror("Błąd", f"Niepoprawna wartość długości: {ve}")
         return
     pwd = generate_password(length)
-    entry_password.config(state=tk.NORMAL)
+    entry_password.config(state=tk.NORMAL, show='•')
     entry_password.delete(0, tk.END)
     entry_password.insert(0, pwd)
     entry_password.config(state='readonly')
+    btn_toggle.config(text='🔒')  # Resetowanie ikony do domyślnej po wygenerowaniu hasła
     pyperclip.copy(pwd)
     lbl_status.config(text="Hasło skopiowane!")
+
 
 # Tworzenie okna aplikacji
 app = tk.Tk()
 app.title("Password Generator")
-app.geometry("400x180")
+app.geometry("390x200")
 app.resizable(False, False)
 
 # Stylizacja
@@ -41,24 +54,28 @@ frame = ttk.Frame(app, padding=20)
 frame.grid(row=0, column=0, sticky="nsew")
 
 # Etykieta i pole do wpisania długości
-lbl_length = ttk.Label(frame, text="Długość hasła:")
-lbl_length.grid(row=0, column=0, padx=5, pady=5, sticky="w")
-entry_length = ttk.Entry(frame, width=10)
+lbl_length = ttk.Label(frame, text="Długość:")
+lbl_length.grid(row=0, column=0, padx=5, pady=8, sticky='ew')
+entry_length = ttk.Entry(frame, width=12)
 entry_length.insert(0, "12")
-entry_length.grid(row=0, column=1, padx=5, pady=5)
+entry_length.grid(row=0, column=1, padx=10, pady=8, sticky='ew')
 
 # Przycisk generowania
-btn_generate = ttk.Button(frame, text="Generuj", command=on_generate)
-btn_generate.grid(row=0, column=2, padx=10, pady=5)
+btn_generate = ttk.Button(frame, text="Generuj", width=21, command=on_generate)
+btn_generate.grid(row=1, column=1, padx=10, pady=8, sticky='e')
 
 # Pole wyświetlające hasło
-lbl_length = ttk.Label(frame, text="Hasło:")
-lbl_length.grid(row=1, column=0, padx=5, pady=5, sticky="e")
-entry_password = ttk.Entry(frame, width=32, state='readonly')
-entry_password.grid(row=1, column=1, columnspan=3, padx=5, pady=10)
+lbl_password = ttk.Label(frame, text="Hasło:")
+lbl_password.grid(row=2, column=0, padx=5, pady=8, sticky="w")
+entry_password = ttk.Entry(frame, state='readonly', show='•')
+entry_password.grid(row=2, column=1, padx=10, pady=8, sticky='ew')
+
+# Przycisk do podglądu hasła
+btn_toggle = ttk.Button(frame, text='🔒', width=2, command=toggle_password_visibility)
+btn_toggle.grid(row=2, column=2, padx=5, pady=8, sticky='e')
 
 # Etykieta statusu
 lbl_status = ttk.Label(frame, text="", foreground="green")
-lbl_status.grid(row=2, column=0, columnspan=3, pady=5)
+lbl_status.grid(row=3, column=0, columnspan=3)
 
 app.mainloop()
