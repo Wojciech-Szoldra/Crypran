@@ -39,7 +39,7 @@ def on_generate():
 
 # Tworzenie okna aplikacji
 app = tk.Tk()
-app.title("Password Generator")
+app.title("Crypran")
 app.geometry("390x200")
 app.resizable(False, False)
 
