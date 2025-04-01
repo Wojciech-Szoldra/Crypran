@@ -24,6 +24,8 @@ def on_generate():
         length = int(entry_length.get())
         if length <= 0:
             raise ValueError("Długość musi być większa od 0.")
+        elif length > 50:
+            raise ValueError("Długość nie może być większa niż 50.")
     except ValueError as ve:
         messagebox.showerror("Błąd", f"Niepoprawna wartość długości: {ve}")
         return
