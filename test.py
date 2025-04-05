@@ -30,11 +30,11 @@ def on_generate():
         messagebox.showerror("Błąd", f"Niepoprawna wartość długości: {ve}")
         return
     pwd = generate_password(length)
-    entry_password.config(state=tk.NORMAL, show='•')
+    entry_password.config(state='NORMAL',show='•')
     entry_password.delete(0, tk.END)
     entry_password.insert(0, pwd)
     entry_password.config(state='readonly')
-    btn_toggle.config(text='🔒')  # Resetowanie ikony do domyślnej po wygenerowaniu hasła
+    btn_toggle.config(text='🔒')
     pyperclip.copy(pwd)
     lbl_status.config(text="Hasło skopiowane!")
 
