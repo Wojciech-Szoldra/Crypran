@@ -81,3 +81,5 @@ lbl_status.grid(row=3, column=0, columnspan=3)
 
 # Uruchomienie pętli zdarzeń
 app.mainloop()
+
+print('Koniec programu')
