@@ -4,12 +4,12 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import pyperclip
 
-# Funkcja do generowania hasła
+# Generowanie hasła
 def generate_password(length=12):
     alphabet = string.ascii_letters + string.digits + string.punctuation
     return ''.join(secrets.choice(alphabet) for i in range(length))
 
-# Funkcja do przełącznia widocznmości hasła
+# Widoczność hasła
 def toggle_password_visibility():
     if entry_password.cget('show') == '•':
         entry_password.config(show='')
@@ -18,8 +18,7 @@ def toggle_password_visibility():
         entry_password.config(show='•')
         btn_toggle.config(text='🔒')
 
-# Funkcja wywoływana po kliknięciu przycisku generowania hasła:
-# Sprawdza wprowadzoną wartość / umieszcza hasło w polu / kopiuje hasło do schowka
+# Kliknięcie przycisku 'Generuj'
 def on_generate():
     try:
         length = int(entry_length.get())
@@ -51,7 +50,7 @@ style.configure("TButton", font=("Arial", 12), padding=5)
 style.configure("TLabel", font=("Arial", 11))
 style.configure("TEntry", font=("Arial", 11), padding=5)
 
-# Układ interfejsu
+# Tworzenie ramki
 frame = ttk.Frame(app, padding=20)
 frame.grid(row=0, column=0, sticky="nsew")
 
