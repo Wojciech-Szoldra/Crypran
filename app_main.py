@@ -3,6 +3,7 @@ import string
 import tkinter as tk
 from tkinter import ttk, messagebox
 import pyperclip
+from PIL import Image, ImageTk
 
 # Generowanie hasła
 def generate_password(length=12):
@@ -78,6 +79,9 @@ btn_toggle.grid(row=2, column=2, padx=5, pady=8, sticky='e')
 # Etykieta statusu
 lbl_status = ttk.Label(frame, text="", foreground="green")
 lbl_status.grid(row=3, column=0, columnspan=3)
+
+icon = ImageTk.PhotoImage(Image.open("C:/Users/wojci/Downloads/password.png"))
+app.wm_iconphoto(True, icon)
 
 # Uruchomienie pętli zdarzeń
 app.mainloop()
