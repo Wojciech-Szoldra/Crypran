@@ -80,7 +80,8 @@ btn_toggle.grid(row=2, column=2, padx=5, pady=8, sticky='e')
 lbl_status = ttk.Label(frame, text="", foreground="green")
 lbl_status.grid(row=3, column=0, columnspan=3)
 
-icon = ImageTk.PhotoImage(Image.open("C:/Users/wojci/Downloads/password.png"))
+# Ikona aplikacji
+icon = ImageTk.PhotoImage(Image.open("C:/ścieżka/do/pliku/ikona.png"))
 app.wm_iconphoto(True, icon)
 
 # Uruchomienie pętli zdarzeń
